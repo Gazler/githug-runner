@@ -1,8 +1,9 @@
 ##! /bin/bash
-rm -rf git_hug
+rm -rf /tmp/git_hug
 
+cd /tmp/
 echo "y" | githug #create folder
-cd git_hug
+cd /tmp/git_hug
 
 #level 1
 git init
@@ -131,19 +132,26 @@ git rebase -i HEAD~3
 githug
 
 #level 32
+echo "94e162b" | githug
+
+#level 33
 git add -e
 githug
 
-#level 33
+#level 34
 git checkout solve_world_hunger
 githug
 
-#level 34
+#level 35
 sleep 1
 git revert HEAD~1 --no-edit
 githug
 
-#level 35
+#level 36
+git reflog | grep "Restore this commit" | awk '{print $1}' | xargs git checkout
+githug
+
+#level 37
 githug
 
 
