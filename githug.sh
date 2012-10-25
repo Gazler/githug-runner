@@ -5,156 +5,163 @@ cd /tmp/
 echo "y" | githug #create folder
 cd /tmp/git_hug
 
-#level 1
+#init
 git init
 githug
 
-#level 2
+#add
 git add README
 githug
 
-#level 3
+#commit
 git commit -m "test message"
 githug
 
-#level 4
+#config
 FULL_NAME=$(git config --get user.name)
 EMAIL=$(git config --get user.email)
 echo -e "$FULL_NAME\n$EMAIL" | githug
 
-#level 5
+#clone
 git clone https://github.com/Gazler/cloneme
 githug
 
-#level 6
+#clone_to_folder
 git clone https://github.com/Gazler/cloneme my_cloned_repo
 githug
 
-#level 7
+#ignore
 echo "*.swp" >> .gitignore
 githug
 
-#level 8
+#status
 git ls-files --other --exclude-standard | githug
 
-#level 9
+#rm
 FILE_NAME=$(git status | grep deleted | cut -d " " -f 5)
 git rm $FILE_NAME
 githug
 
-#level 10
+#rm_cached
 FILE_NAME=$(git status | grep "new file" | cut -d " " -f 5)
 echo $FILE_NAME
 git rm --cached $FILE_NAME
 githug
 
-#level 11
+#rename
 git mv oldfile.txt newfile.txt
 githug
 
-#level 12
-git log | grep commit | cut -c 8-14 | githug
+#log
+git log --pretty=short | grep commit | cut -c 8-14 | githug
 
-#level 13
+#tag
 git tag new_tag
 githug
 
-#level 14
+#commit_amend
 git add forgotten_file.rb
 git commit --amend -C HEAD
 githug
 
-#level 15
+#reset
 git reset HEAD to_commit_second.rb
 githug
 
-#level 16
+#reset_soft
+git reset --soft HEAD^
+githug
+
+#checkout_file
 git checkout -- config.rb
 githug
 
-#level 17
+#remote
 git remote | githug
 
-#level 18
+#remote_url
 git remote -v | tail -2 | head -1 | cut -c 17-52 | githug
 
-#level 19
+#pull
 git pull origin master
 githug
 
-#level 20
+#remote_add
 git remote add origin https://github.com/githug/githug
 githug
 
-#level 21
+#push
+git rebase origin/master
+git push origin
+githug
+
+#diff
 echo "26" | githug
 
-#level 22
+#blame
 echo "spider man" | githug
 
-#level 23
+#branch
 git branch test_code
 githug
 
-#level 24
+#checkout
 git checkout -b my_branch
 githug
 
-#level 25
-COMMIT=$(git log HEAD~1 | head -1 | cut -d " " -f 2)
+#branch_at
+COMMIT=$(git log HEAD~1 --pretty=short | head -1 | cut -d " " -f 2)
 git branch test_branch $COMMIT
 githug
 
-#level 26
+#merge
 git merge feature
 githug
 
-#level 27
+#cherry-pick
 COMMIT=$(git log new-feature --oneline  -n 3 | tail -1 | cut -d " " -f 1)
 git cherry-pick $COMMIT
 githug
 
-#level 28
+#rename_commit
 git rebase -i HEAD~2
 githug
 
-#level 29
+#squash
 git rebase -i HEAD~3
 githug
 
-#level 30
+#merge_squash
 git merge --squash long-feature-branch
 git commit -m "Merged Long Feature Branch"
 githug
 
-#level 31
+#reorder
 git rebase -i HEAD~3
 githug
 
-#level 32
-echo "94e162b" | githug
+#bisect
+echo "18ed2ac" | githug
 
-#level 33
+#stage_lines
 git add -e
 githug
 
-#level 34
+#find_old_branch
 git checkout solve_world_hunger
 githug
 
-#level 35
+#revert
 sleep 1
 git revert HEAD~1 --no-edit
 githug
 
-#level 36
+#restore
 git reflog | grep "Restore this commit" | awk '{print $1}' | xargs git checkout
 githug
 
-#level 37
+#contribute
 githug
-
-
 
 #cd ..
 #rm -rf git_hug
