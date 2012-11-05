@@ -109,6 +109,10 @@ githug
 git checkout -b my_branch
 githug
 
+#checkout_tag
+git checkout v1.2
+githug
+
 #branch_at
 COMMIT=$(git log HEAD~1 --pretty=short | head -1 | cut -d " " -f 2)
 git branch test_branch $COMMIT
@@ -158,6 +162,12 @@ githug
 
 #restore
 git reflog | grep "Restore this commit" | awk '{print $1}' | xargs git checkout
+githug
+
+#conflict
+git merge mybranch
+git mergetool -t vimdiff
+git commit -C HEAD
 githug
 
 #contribute
